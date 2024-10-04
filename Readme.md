@@ -19,8 +19,16 @@ make -j $(nproc) test index
 ```bash
 INDEX=./target/dnf.index docker compose -p korap4dnb --profile=lite -f korap4dnb-compose.yml up -d
 
-xdg-open http://localhost:4000/?q=Test
+xdg-open http://localhost:4001/?q=Test
 ```
+
+### With ssh tunnel from localhost to the DeFaKo@DNB server
+
+```bash
+ssh -L 4001:localhost:4001 korap.dnb.de
+xdg-open http://localhost:4001/?q=Test
+```
+
 
 ### Stop local KorAP
 
