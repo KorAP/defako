@@ -13,4 +13,8 @@ json/
 .gitlab-ci-local/
 \#*
 models/
-dnb.index/
+dnf.index/
+p5
+data/adminToken
+data/liteDB.sqlite
+
