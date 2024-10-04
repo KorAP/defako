@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<searchRetrieveResponse xmlns="http://www.loc.gov/zing/srw/">
+  <records>
+<record>
+  <recordSchema>oai_dc</recordSchema>
+  <recordPacking>xml</recordPacking>
+  <recordData>
+    <dc xmlns:dnb="http://d-nb.de/standards/dnbterms" xmlns:tel="http://krait.kb.nl/coop/tel/handbook/telterms.html" xmlns="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <dc:title>Treffen sich zwei</dc:title>
+      <dc:creator>Hanika, Iris</dc:creator>
+      <dc:publisher>Literaturverlag Droschl</dc:publisher>
+      <dc:date>2008</dc:date>
+      <dc:language>ger</dc:language>
+      <dc:identifier xsi:type="tel:ISBN">978-3-85420-876-1</dc:identifier>
+      <dc:identifier xsi:type="dnb:IDN">8000000001</dc:identifier>
+      <dc:subject>830 Deutsche Literatur</dc:subject>
+      <dc:subject>B Belletristik</dc:subject>
+      <dc:type>Online-Ressource</dc:type>
+    </dc>
+  </recordData>
+</record>
+<record>
+  <recordSchema>oai_dc</recordSchema>
+  <recordPacking>xml</recordPacking>
+  <recordData>
+    <dc xmlns:dnb="http://d-nb.de/standards/dnbterms" xmlns:tel="http://krait.kb.nl/coop/tel/handbook/telterms.html" xmlns="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <dc:title>Sogar Papageien überleben uns</dc:title>
+      <dc:creator>Martynova, Olga</dc:creator>
+      <dc:publisher>Literaturverlag Droschl</dc:publisher>
+      <dc:date>2010</dc:date>
+      <dc:language>ger</dc:language>
+      <dc:identifier xsi:type="tel:ISBN">978-3-85420-899-0</dc:identifier>
+      <dc:identifier xsi:type="dnb:IDN">8000000002</dc:identifier>
+      <dc:subject>830 Deutsche Literatur</dc:subject>
+      <dc:subject>B Belletristik</dc:subject>
+      <dc:type>Online-Ressource</dc:type>
+    </dc>
+  </recordData>
+</record>
+<record>
+  <recordSchema>oai_dc</recordSchema>
+  <recordPacking>xml</recordPacking>
+  <recordData>
+    <dc xmlns:dnb="http://d-nb.de/standards/dnbterms" xmlns:tel="http://krait.kb.nl/coop/tel/handbook/telterms.html" xmlns="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <dc:title>Was kommt</dc:title>
+      <dc:creator>Stangl, Thomas</dc:creator>
+      <dc:publisher>Literaturverlag Droschl</dc:publisher>
+      <dc:date>2009</dc:date>
+      <dc:language>ger</dc:language>
+      <dc:identifier xsi:type="tel:ISBN">978-3-85420-923-2</dc:identifier>
+      <dc:identifier xsi:type="dnb:IDN">8000000003</dc:identifier>
+      <dc:subject>830 Deutsche Literatur</dc:subject>
+      <dc:subject>B Belletristik</dc:subject>
+      <dc:type>Online-Ressource</dc:type>
+    </dc>
+  </recordData>
+</record>
+<record>
+  <recordSchema>oai_dc</recordSchema>
+  <recordPacking>xml</recordPacking>
+  <recordData>
+    <dc xmlns:dnb="http://d-nb.de/standards/dnbterms" xmlns:tel="http://krait.kb.nl/coop/tel/handbook/telterms.html" xmlns="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <dc:title>Regeln des Tanzes</dc:title>
+      <dc:creator>Stangl, Thomas</dc:creator>
+      <dc:publisher>Literaturverlag Droschl</dc:publisher>
+      <dc:date>2013</dc:date>
+      <dc:language>ger</dc:language>
+      <dc:identifier xsi:type="tel:ISBN">978-3-85420-935-5</dc:identifier>
+      <dc:identifier xsi:type="dnb:IDN">8000000004</dc:identifier>
+      <dc:subject>830 Deutsche Literatur</dc:subject>
+      <dc:subject>B Belletristik</dc:subject>
+      <dc:type>Online-Ressource</dc:type>
+    </dc>
+  </recordData>
+</record>
+<record>
+  <recordSchema>oai_dc</recordSchema>
+  <recordPacking>xml</recordPacking>
+  <recordData>
+    <dc xmlns:dnb="http://d-nb.de/standards/dnbterms" xmlns:tel="http://krait.kb.nl/coop/tel/handbook/telterms.html" xmlns="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <dc:title>Das Polykrates-Syndrom</dc:title>
+      <dc:creator>Fian, Antonio</dc:creator>
+      <dc:publisher>Literaturverlag Droschl</dc:publisher>
+      <dc:date>2014</dc:date>
+      <dc:language>ger</dc:language>
+      <dc:identifier xsi:type="tel:ISBN">978-3-85420-938-6</dc:identifier>
+      <dc:identifier xsi:type="dnb:IDN">8000000005</dc:identifier>
+      <dc:subject>830 Deutsche Literatur</dc:subject>
+      <dc:subject>B Belletristik</dc:subject>
+      <dc:type>Online-Ressource</dc:type>
+    </dc>
+  </recordData>
+</record>
+<record>
+  <recordSchema>oai_dc</recordSchema>
+  <recordPacking>xml</recordPacking>
+  <recordData>
+    <dc xmlns:dnb="http://d-nb.de/standards/dnbterms" xmlns:tel="http://krait.kb.nl/coop/tel/handbook/telterms.html" xmlns="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <dc:title>Aberland</dc:title>
+      <dc:creator>Klemm, Gertraud</dc:creator>
+      <dc:publisher>Literaturverlag Droschl</dc:publisher>
+      <dc:date>2015</dc:date>
+      <dc:language>ger</dc:language>
+      <dc:identifier xsi:type="tel:ISBN">978-3-85420-944-7</dc:identifier>
+      <dc:identifier xsi:type="dnb:IDN">8000000006</dc:identifier>
+      <dc:subject>830 Deutsche Literatur</dc:subject>
+      <dc:subject>B Belletristik</dc:subject>
+      <dc:type>Online-Ressource</dc:type>
+    </dc>
+  </recordData>
+</record>
+<record>
+  <recordSchema>oai_dc</recordSchema>
+  <recordPacking>xml</recordPacking>
+  <recordData>
+    <dc xmlns:dnb="http://d-nb.de/standards/dnbterms" xmlns:tel="http://krait.kb.nl/coop/tel/handbook/telterms.html" xmlns="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <dc:title>Eins im Andern</dc:title>
+      <dc:creator>Schwitter, Monique</dc:creator>
+      <dc:publisher>Literaturverlag Droschl</dc:publisher>
+      <dc:date>2015</dc:date>
+      <dc:language>ger</dc:language>
+      <dc:identifier xsi:type="tel:ISBN">978-3-85420-947-8</dc:identifier>
+      <dc:identifier xsi:type="dnb:IDN">8000000007</dc:identifier>
+      <dc:subject>830 Deutsche Literatur</dc:subject>
+      <dc:subject>B Belletristik</dc:subject>
+      <dc:type>Online-Ressource</dc:type>
+    </dc>
+  </recordData>
+</record>
+<record>
+  <recordSchema>oai_dc</recordSchema>
+  <recordPacking>xml</recordPacking>
+  <recordData>
+    <dc xmlns:dnb="http://d-nb.de/standards/dnbterms" xmlns:tel="http://krait.kb.nl/coop/tel/handbook/telterms.html" xmlns="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <dc:title>Zu den Elefanten</dc:title>
+      <dc:creator>Karoshi, Peter</dc:creator>
+      <dc:publisher>Leykam Buchverlag</dc:publisher>
+      <dc:date>2021</dc:date>
+      <dc:language>ger</dc:language>
+      <dc:identifier xsi:type="tel:ISBN">978-3-7011-8213-8</dc:identifier>
+      <dc:identifier xsi:type="dnb:IDN">8000000008</dc:identifier>
+      <dc:subject>830 Deutsche Literatur</dc:subject>
+      <dc:subject>B Belletristik</dc:subject>
+      <dc:type>Online-Ressource</dc:type>
+    </dc>
+  </recordData>
+</record>
+<record>
+  <recordSchema>oai_dc</recordSchema>
+  <recordPacking>xml</recordPacking>
+  <recordData>
+    <dc xmlns:dnb="http://d-nb.de/standards/dnbterms" xmlns:tel="http://krait.kb.nl/coop/tel/handbook/telterms.html" xmlns="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <dc:title>Ein Hund kam in die Küche</dc:title>
+      <dc:creator>Mall, Sepp</dc:creator>
+      <dc:publisher>Leykam Buchverlag</dc:publisher>
+      <dc:date>2023</dc:date>
+      <dc:language>ger</dc:language>
+      <dc:identifier xsi:type="tel:ISBN">978-3-7011-8308-1</dc:identifier>
+      <dc:identifier xsi:type="dnb:IDN">8000000009</dc:identifier>
+      <dc:subject>830 Deutsche Literatur</dc:subject>
+      <dc:subject>B Belletristik</dc:subject>
+      <dc:type>Online-Ressource</dc:type>
+    </dc>
+  </recordData>
+</record>
+<record>
+  <recordSchema>oai_dc</recordSchema>
+  <recordPacking>xml</recordPacking>
+  <recordData>
+    <dc xmlns:dnb="http://d-nb.de/standards/dnbterms" xmlns:tel="http://krait.kb.nl/coop/tel/handbook/telterms.html" xmlns="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <dc:title>Mein Vater war ein Mann an Land und im Wasser ein Walfisch</dc:title>
+      <dc:creator>Steinbeck, Michelle</dc:creator>
+      <dc:publisher>Lenos Verlag</dc:publisher>
+      <dc:date>2016</dc:date>
+      <dc:language>ger</dc:language>
+      <dc:identifier xsi:type="tel:ISBN">978-3-85787-947-0</dc:identifier>
+      <dc:identifier xsi:type="dnb:IDN">8000000010</dc:identifier>
+      <dc:subject>830 Deutsche Literatur</dc:subject>
+      <dc:subject>B Belletristik</dc:subject>
+      <dc:type>Online-Ressource</dc:type>
+    </dc>
+  </recordData>
+</record>
+<record>
+  <recordSchema>oai_dc</recordSchema>
+  <recordPacking>xml</recordPacking>
+  <recordData>
+    <dc xmlns:dnb="http://d-nb.de/standards/dnbterms" xmlns:tel="http://krait.kb.nl/coop/tel/handbook/telterms.html" xmlns="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <dc:title>Toni &amp; Toni</dc:title>
+      <dc:creator>Oravin, Max</dc:creator>
+      <dc:publisher>Literaturverlag Droschl</dc:publisher>
+      <dc:date>2024</dc:date>
+      <dc:language>ger</dc:language>
+      <dc:identifier xsi:type="tel:ISBN">978-3-99059-174-1</dc:identifier>
+      <dc:identifier xsi:type="dnb:IDN">8000000011</dc:identifier>
+      <dc:subject>830 Deutsche Literatur</dc:subject>
+      <dc:subject>B Belletristik</dc:subject>
+      <dc:type>Online-Ressource</dc:type>
+    </dc>
+  </recordData>
+</record>
+    <!-- From here on only fake examples for testing -->
+    <record>
+      <recordSchema>oai_dc</recordSchema>
+      <recordPacking>xml</recordPacking>
+      <recordData>
+        <dc xmlns:dnb="http://d-nb.de/standards/dnbterms" xmlns:tel="http://krait.kb.nl/coop/tel/handbook/telterms.html" xmlns="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <dc:title>Ein Hauch von Meer und Mord : Juist-Krimi / Barbara Saladin</dc:title>
+          <dc:creator>Saladin, Barbara [Verfasser]</dc:creator>
+          <dc:publisher>Hillesheim : KBV Verlags- &amp; Medien</dc:publisher>
+          <dc:date>2012</dc:date>
+          <dc:language>ger</dc:language>
+          <dc:identifier xsi:type="tel:URN">urn:nbn:de:101:1-2012112917525</dc:identifier>
+          <dc:identifier xsi:type="tel:URL">http://nbn-resolving.de/urn:nbn:de:101:1-2012112917525</dc:identifier>
+          <dc:identifier xsi:type="tel:ISBN">978-3-95441-123-8</dc:identifier>
+          <dc:identifier xsi:type="tel:URL">http://d-nb.info/1028379862/34</dc:identifier>
+          <dc:identifier xsi:type="dnb:IDN">8999999998</dc:identifier>
+          <dc:subject>830 Deutsche Literatur</dc:subject>
+          <dc:subject>B Belletristik</dc:subject>
+          <dc:type>Online-Ressource</dc:type>
+        </dc>
+      </recordData>
+      <recordPosition>1</recordPosition>
+    </record>
+
+    <record>
+      <recordSchema>oai_dc</recordSchema>
+      <recordPacking>xml</recordPacking>
+      <recordData>
+        <dc xmlns:dnb="http://d-nb.de/standards/dnbterms" xmlns:tel="http://krait.kb.nl/coop/tel/handbook/telterms.html" xmlns="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <dc:title>Herzblut : Kriminalroman aus Düsseldorf / David Daniel</dc:title>
+          <dc:creator>Daniel, David [Verfasser]</dc:creator>
+          <dc:publisher>Hillesheim : KBV Verlags- &amp; Medien</dc:publisher>
+          <dc:date>2018</dc:date>
+          <dc:language>ger</dc:language>
+          <dc:identifier xsi:type="tel:URN">urn:nbn:de:101:1-2012112917539</dc:identifier>
+          <dc:identifier xsi:type="tel:URL">http://nbn-resolving.de/urn:nbn:de:101:1-2012112917539</dc:identifier>
+          <dc:identifier xsi:type="tel:ISBN">978-3-95441-027-9</dc:identifier>
+          <dc:identifier xsi:type="tel:URL">http://d-nb.info/1028379870/34</dc:identifier>
+          <dc:identifier xsi:type="dnb:IDN">8999999999</dc:identifier>
+          <dc:subject>830 Deutsche Literatur</dc:subject>
+          <dc:subject>B Belletristik</dc:subject>
+          <dc:type>Online-Ressource</dc:type>
+        </dc>
+      </recordData>
+    </record>
+  </records>
+</searchRetrieveResponse>
