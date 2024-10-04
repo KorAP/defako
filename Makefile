@@ -2,9 +2,9 @@ ifneq (,$(filter test,$(MAKECMDGOALS)))
 SRC_DIR = test/resources/dnf/p5
 YEARS= 00 03 08 09 11 12 14 15 19
 else
-SRC_DIR ?= ./DeFaKo@DNB
+SRC_DIR ?= ./p5
 #YEARS ?= $(shell seq -w 2012 2024 | sed 's/^.*\([0-9][0-9]\)/\1/')
-YEARS ?= $(shell seq -w 2005 2024 | sed 's/^.*\([0-9][0-9]\)/\1/')
+YEARS ?= $(shell seq -w 2000 2020 | sed 's/^.*\([0-9][0-9]\)/\1/')
 endif
 
 BUILD_DIR = build
