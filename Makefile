@@ -101,7 +101,7 @@ models/dereko_domains_s.classifier:
 %.krill.tar: %.zip %.marmot-malt.zip %.tree_tagger.zip
 	mkdir -p ${BUILD_DIR}/krill/$(basename $@)
 	mkdir -p $(basename $@)
-	K2K_TRANSLATOR_TEXT=1 korapxml2krill archive --quiet -w -z -cfg krill-korap4dnf.cfg -c ${BUILD_DIR}/krill/$(basename $@)/korapxml2krill.cache -j $(MAX_THREADS) -te ${BUILD_DIR}/krill/$(basename $@) --non-word-tokens --meta I5 -i $< -i $(word 2,$^) -i $(word 3,$^) -o $(basename $@)
+	K2K_TRANSLATOR_TEXT=1 korapxml2krill archive --quiet -w -z -cfg krill-korap4dnb.cfg -c ${BUILD_DIR}/krill/$(basename $@)/korapxml2krill.cache -j $(MAX_THREADS) -te ${BUILD_DIR}/krill/$(basename $@) --non-word-tokens --meta I5 -i $< -i $(word 2,$^) -i $(word 3,$^) -o $(basename $@)
 
 %.json: %.krill.tar
 	rm -rf $@
@@ -114,7 +114,7 @@ models/dereko_domains_s.classifier:
 $(TARGET_DIR)/dnf.index.tar.xz: $(TARGET_DIR)/dnf.index
 	tar -I 'xz -T0' -C $(dir $<) -cf $@ $(notdir $<)
 
-deploy: $(TARGET_DIR)/dnf.index.tar.xz korap4dnf-compose.yml
+deploy: $(TARGET_DIR)/dnf.index.tar.xz korap4dnb-compose.yml
 	rsync -v $^ $(DEPLOY_USER)@$(DEPLOY_HOST):$(DEPLOY_PATH)/
 	ssh $(DEPLOY_USER)@$(DEPLOY_HOST) "mkdir -p $(DEPLOY_PATH) && cd $(DEPLOY_PATH) && docker compose -p korap4dnb --profile=lite -f $(notdir $(word 2,$^)) up -d --dry-run && docker compose -p korap4dnb stop && (mv -f dnf.index dnf.index.bak || true) && tar Jxvf $(notdir $<) && docker compose -p korap4dnb --profile=lite -f $(notdir $(word 2,$^)) up -d"
 
