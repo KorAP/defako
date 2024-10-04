@@ -199,7 +199,7 @@
     <!-- END variables derived from sru request to dnb archive -->
 
 
-    <xsl:variable name="corpus_sigle" select="concat('DNB', substring($erscheinungsjahr, 3, 2))"/>
+    <xsl:variable name="corpus_sigle" select="concat('DNF', substring($erscheinungsjahr, 3, 2))"/>
 
     <!-- for BOTD: -->
     <!-- Dokumentsigle muss zusammen mit Korpussigle (z.B DIV fuer loz-div und loz-div-pub) eindeutig sein -->
