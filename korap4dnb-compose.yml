@@ -27,7 +27,7 @@ services:
       - INDEX=${INDEX:-${PWD}/dnb.index}
     image: "korap/kustvakt:0.74"
     ports:
-      - "8089:8089"
+      - "8090:8089"
     user: root
     volumes:
       - "${INDEX}:/kustvakt/index:z"
