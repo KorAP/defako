@@ -38,7 +38,7 @@ docker compose -p defako down
 
 ## Convert PDFs to TEI P5
 
-This is actually the first step, but usually not necessary, as the comparatively expensive TEI P5 files in `pf5` are not deleted by `make clean`.
+This is actually the first step, but usually not necessary, as the comparatively expensive TEI P5 files in `p5` folder are not deleted by `make clean`.
 
 ### Start GOBID server
 
@@ -46,7 +46,7 @@ This is actually the first step, but usually not necessary, as the comparatively
 docker run --rm --init -v ./grobid.yaml:/opt/grobid/grobid-home/config/grobid.yaml --ulimit core=0 -e JAVA_OPTS=-Xmx400g -p 8070:8070 grobid/grobid:0.8.1
 ```
 
-### Start client to convert PDFs to TEI P5
+### Run client to convert PDFs to TEI P5
 
 ```bash
 java -jar lib/org.grobid.client-0.5.4-SNAPSHOT.one-jar.jar -n 100 -in /mnt/data/Diss-Sample/PDF -out p5
