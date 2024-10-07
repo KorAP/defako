@@ -15,7 +15,7 @@ services:
         target: /kalamar/public/robots.txt
       - type: bind
         source: ./kalamar.conf
-        target: /kalamar/kalamar.conf
+        target: /kalamar/kalamar.production.conf
       - type: bind
         source: ./data/doc/intro.html.ep
         target: /kalamar/templates/custom/intro.html.ep
