@@ -51,3 +51,12 @@ docker run --rm --init -v ./grobid.yaml:/opt/grobid/grobid-home/config/grobid.ya
 ```bash
 java -jar lib/org.grobid.client-0.5.4-SNAPSHOT.one-jar.jar -n 100 -in /mnt/data/Diss-Sample/PDF -out p5
 ```
+
+### HTTPD configuration
+
+Configure Apache2 to proxy requests to the local KorAP server:
+
+```apache
+ProxyPass /defako http://localhost:4001
+ProxyPassReverse /defako http://localhost:4001
+```
