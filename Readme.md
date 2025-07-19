@@ -1,5 +1,13 @@
 # Conversion tools for Deutsches Fachliteraturkorpus (DeFaKo@DNB)
 
+## Prerequisites
+
+### Saxon EE License
+
+This project requires a Saxon EE license for XML processing. The license file (`saxon-license.lic`) is not included in this repository for security reasons. 
+
+For CI/CD environments, set the `SAXON_LICENSE` environment variable with the license content. For local development, place your `saxon-license.lic` file in the `lib/` directory.
+
 ## Testing
 
 ### Run TEI I5 conversion tests on local test data

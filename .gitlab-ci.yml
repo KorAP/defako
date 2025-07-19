@@ -27,6 +27,9 @@ build-and-test-i5:
     - apt-get -o dir::cache::archives="$APT_CACHE_DIR" update
     - apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -y libxml2-utils curl openjdk-17-jre-headless xmlstarlet
     - end_section install_linux_packages
+    - start_section setup_saxon_license "Setting up Saxon license"
+    - echo "$SAXON_LICENSE" > lib/saxon-license.lic
+    - end_section setup_saxon_license
     - start_section install_models "Installing models"
     - make models/dereko_domains_s.classifier
     - end_section install_models
@@ -71,6 +74,10 @@ build-index:
     - apt-get -o dir::cache::archives="$APT_CACHE_DIR" update
     - apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -y rsync pv jq curl openjdk-17-jre-headless docker.io
     - end_section install_linux_packages
+
+    - start_section setup_saxon_license "Setting up Saxon license"
+    - echo "$SAXON_LICENSE" > lib/saxon-license.lic
+    - end_section setup_saxon_license
 
     - start_section install_tree_tagger "Installing TreeTagger"
     - docker image inspect korap/conllu2treetagger:latest >/dev/null 2>&1 || curl -Ls 'https://gitlab.ids-mannheim.de/KorAP/CoNLL-U-Treetagger/-/jobs/artifacts/master/raw/conllu2treetagger.xz?job=build-docker-image' | docker load
