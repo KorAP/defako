@@ -17,4 +17,5 @@ dnf.index/
 p5
 data/adminToken
 data/liteDB.sqlite
+lib/saxon-license.lic
 
