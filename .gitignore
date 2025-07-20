@@ -17,5 +17,8 @@ dnf.index/
 p5
 data/adminToken
 data/liteDB.sqlite
+data/db.sqlite
+data/super_client_info
+krill.secretB64
 lib/saxon-license.lic
 
