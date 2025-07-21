@@ -68,3 +68,8 @@ Configure Apache2 to proxy requests to the local KorAP server:
 ProxyPass /defako http://localhost:4001
 ProxyPassReverse /defako http://localhost:4001
 ```
+
+
+## References
+
+Kupietz, Marc/Leinen, Peter/Diewald, Nils (2024): Towards a Very Large German Academic Corpus: Step 1: Building and Making Available a Corpus of 10,000 Doctoral Dissertations. Talk given at the [*Workshop on Comparable and Interoperable Corpora of Academic Texts @CLARIN2024*](https://www.clarin.eu/event/2024/workshop-comparable-and-interoperable-corpora-academic-texts-clarin2024) on 2024-10-18, Barcelona. <https://corpora.ids-mannheim.de/slides/2024-10-17-Towards-a-German-Academic-Corpus/#/>.
