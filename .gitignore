@@ -29,4 +29,5 @@ lib/xmlresolver-*.jar
 lib/xmlresolver-*-data.jar
 bin/korapxmltool
 defako-*.index
+.claude/
 

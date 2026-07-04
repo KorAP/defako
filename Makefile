@@ -165,7 +165,7 @@ malt: $(foreach year,$(YEARS),$(TARGET_DIR)/dnf$(year).marmot-malt.zip)
 #	mkdir -p ${BUILD_DIR}/krill/$(basename $@)
 #	mkdir -p $(basename $@)
 #	K2K_TRANSLATOR_TEXT=1 korapxml2krill archive --quiet -w -z -cfg krill-korap4dnb.cfg -c ${BUILD_DIR}/krill/$(basename $@)/korapxml2krill.cache -j $(MAX_THREADS) -te ${BUILD_DIR}/krill/$(basename $@) --non-word-tokens --meta I5 -i $< -i $(word 2,$^) -i $(word 3,$^) -o $(basename $@)
-%.krill.tar: %.zip %.marmot-malt.zip %.tree_tagger.zip | $(KORAPXMLTOOL_PREREQ)
+%.krill.tar: %.zip %.marmot-malt.zip %.tree_tagger.zip %.spacy.zip | $(KORAPXMLTOOL_PREREQ)
 	K2K_PUBLISHER_STRING=1 K2K_TRANSLATOR_TEXT=1 $(KORAPXMLTOOL) -j 6 --non-word-tokens -linfo -f -t krill -D $(TARGET_DIR) $^
 	$(SLACK) "$(basename $@) krill archive created"
 

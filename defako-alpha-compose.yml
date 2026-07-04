@@ -6,7 +6,7 @@ services:
       - "4011:64543"
     environment:
       KALAMAR_API: "http://kustvakt:8089/api/"
-      KALAMAR_HINT_FOUNDRIES: "-spacy,-opennlp,-corenlp"
+      KALAMAR_HINT_FOUNDRIES: "-opennlp,-corenlp"
       KALAMAR_VC_HELPER_FIELDS: "${KALAMAR_VC_HELPER_FIELDS}"
     depends_on:
       - kustvakt

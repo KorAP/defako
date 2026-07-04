@@ -75,6 +75,7 @@ build-index:
           - target/dnf15.zip
           - target/dnf15.tree_tagger.zip
           - target/dnf15.marmot-malt.zip
+          - target/dnf15.spacy.zip
           - target/dnf15.krill.tar
 
   before_script:
