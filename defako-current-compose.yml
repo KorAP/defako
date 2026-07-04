@@ -1,0 +1,32 @@
+name: defako-current
+services:
+  kalamar:
+    image: "korap/kalamar:latest"
+    ports:
+      - "4010:64543"
+    environment:
+      KALAMAR_API: "http://kustvakt:8089/api/"
+      KALAMAR_HINT_FOUNDRIES: "-spacy,-opennlp,-corenlp"
+      KALAMAR_VC_HELPER_FIELDS: "${KALAMAR_VC_HELPER_FIELDS}"
+    depends_on:
+      - kustvakt
+    volumes:
+      - type: bind
+        source: ./html/robots.txt
+        target: /kalamar/public/robots.txt
+      - type: bind
+        source: ./data/kalamar-current.conf
+        target: /kalamar/kalamar.production.conf
+      - type: bind
+        source: ./data/doc/intro.html.ep
+        target: /kalamar/templates/custom/intro.html.ep
+    restart: "unless-stopped"
+  kustvakt:
+    image: "korap/kustvakt:latest"
+    user: root
+    volumes:
+      - "${INDEX:-./defako-current.index}:/kustvakt/index:z"
+      - type: bind
+        source: "${PWD}/data/"
+        target: /kustvakt/data/
+    restart: "unless-stopped"

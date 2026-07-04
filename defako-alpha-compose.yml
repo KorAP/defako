@@ -1,12 +1,13 @@
-volumes:
-  example-index:
+name: defako-alpha
 services:
   kalamar:
-    image: "korap/kalamar:dnb"
+    image: "korap/kalamar:latest"
     ports:
-      - "4001:64543"
+      - "4011:64543"
     environment:
       KALAMAR_API: "http://kustvakt:8089/api/"
+      KALAMAR_HINT_FOUNDRIES: "-spacy,-opennlp,-corenlp"
+      KALAMAR_VC_HELPER_FIELDS: "${KALAMAR_VC_HELPER_FIELDS}"
     depends_on:
       - kustvakt
     volumes:
@@ -14,26 +15,18 @@ services:
         source: ./html/robots.txt
         target: /kalamar/public/robots.txt
       - type: bind
-        source: ./kalamar.conf
+        source: ./data/kalamar-alpha.conf
         target: /kalamar/kalamar.production.conf
       - type: bind
         source: ./data/doc/intro.html.ep
         target: /kalamar/templates/custom/intro.html.ep
-    profiles:
-      - lite
     restart: "unless-stopped"
   kustvakt:
-    environment:
-      - INDEX=${INDEX:-${PWD}/dnb.index}
-    image: "korap/kustvakt:0.74"
-    ports:
-      - "8090:8089"
+    image: "korap/kustvakt:latest"
     user: root
     volumes:
-      - "${INDEX}:/kustvakt/index:z"
+      - "${INDEX:-./defako-alpha.index}:/kustvakt/index:z"
       - type: bind
         source: "${PWD}/data/"
         target: /kustvakt/data/
-    profiles:
-      - lite
     restart: "unless-stopped"

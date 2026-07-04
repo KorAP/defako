@@ -1,0 +1,35 @@
+name: defako-test
+services:
+  kalamar:
+    image: "korap/kalamar:latest"
+    ports:
+      - "4013:64543"
+    environment:
+      KALAMAR_API: "http://kustvakt:8089/api/"
+      KALAMAR_HINT_FOUNDRIES: "-spacy,-opennlp,-corenlp"
+    depends_on:
+      - kustvakt
+    volumes:
+      - type: bind
+        source: ./html/robots.txt
+        target: /kalamar/public/robots.txt
+      - type: bind
+        source: ./data/kalamar-test.conf
+        target: /kalamar/kalamar.production.conf
+      - type: bind
+        source: ./data/doc/intro.html.ep
+        target: /kalamar/templates/custom/intro.html.ep
+    restart: "unless-stopped"
+  kustvakt:
+    environment:
+      - INDEX=${INDEX:-./target/dnf.index}
+    image: "korap/kustvakt:latest"
+    ports:
+      - "8090:8089"
+    user: root
+    volumes:
+      - "${INDEX:-./target/dnf.index}:/kustvakt/index:z"
+      - type: bind
+        source: "${PWD}/data/"
+        target: /kustvakt/data/
+    restart: "unless-stopped"
