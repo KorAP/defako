@@ -43,10 +43,10 @@ P5_DIR ?= $(SRC_DIR)
 
 .DELETE_ON_ERROR:
 
-.PHONY: all clean test i5 i5valid krill malt index check-saxon-license check-xmllint
+.PHONY: all clean distclean test i5 i5valid krill malt index check-saxon-license check-xmllint
 
 
-.PRECIOUS: $(TARGET_DIR)/%.i5.xml $(TARGET_DIR)/dnf%.pre.i5.xml %.zip %.tree_tagger.zip %.ud.zip %.marmot-malt.zip %.spacy.zip %.i5.xml %.tar
+.PRECIOUS: $(TARGET_DIR)/%.i5.xml $(TARGET_DIR)/dnf%.pre.i5.xml $(TARGET_DIR)/.i5-individual.stamp %.zip %.tree_tagger.zip %.ud.zip %.marmot-malt.zip %.spacy.zip %.i5.xml %.tar
 
 all: index
 
@@ -54,7 +54,10 @@ krill: $(foreach year,$(YEARS),$(TARGET_DIR)/dnf$(year).krill.tar)
 
 index: $(TARGET_DIR)/dnf.index
 
-P5S := $(wildcard $(P5_DIR)/*.tei.xml)
+# Do NOT expand the TEI sources into Make prerequisite lists: with the full
+# corpus (>100K files) that causes Make to segfault while constructing the
+# dependency graph.  Individual .i5.xml files are built via a single sub-make
+# (serialised by the stamp file below).
 
 check-saxon-license: $(SAXON_STAMP)
 	@test -r "$(SAXON_LICENSE_FILE)" || { echo "ERROR: Saxon EE license not found or not readable: $(SAXON_LICENSE_FILE)"; echo "Copy your Saxon license to lib/saxon-license.lic before building .i5.xml files."; exit 1; }
@@ -65,11 +68,23 @@ check-xmllint:
 $(TARGET_DIR)/dnf%.i5.xml: $(TARGET_DIR)/dnf%.pre.i5.xml  xslt/pass2.xsl xslt/pass3.xsl models/dereko_domains_s.classifier | check-saxon-license
 	$(SAXON) -xsl:xslt/pass2.xsl $< | $(SAXON) -xsl:xslt/pass3.xsl - > $@
 
-$(TARGET_DIR)/dnf%.pre.i5.xml: $(patsubst %.tei.xml,$(TARGET_DIR)/%.i5.xml,$(notdir $(P5S)))
+# Single sub-make builds all individual tei→i5.xml files once.
+# Using a stamp file (not a phony target) ensures Make only runs this once even
+# when multiple dnf%.pre.i5.xml targets are built in parallel — each waits for
+# the same stamp and never races on the same target/ files.
+$(TARGET_DIR)/.i5-individual.stamp: xslt/p5toi5.xsl xslt/idsCorpus-template.xml | check-saxon-license
+	mkdir -p $(TARGET_DIR)
+	find -L $(SRC_DIR) -type f -name '*.tei.xml' | sort -u | \
+		sed 's|.*/\(.*\)\.tei\.xml|$(TARGET_DIR)/\1.i5.xml|' | \
+		xargs --no-run-if-empty -d '\n' $(MAKE) BUILD_DIR=$(BUILD_DIR) TARGET_DIR=$(TARGET_DIR) SRC_DIR=$(SRC_DIR)
+	touch $@
+
+$(TARGET_DIR)/dnf%.pre.i5.xml: xslt/idsCorpus-template.xml $(TARGET_DIR)/.i5-individual.stamp
 	rm -f $(TARGET_DIR)/filelist$*.txt
 	head -n -1 xslt/idsCorpus-template.xml | sed -e 's/{YY}/$*/' > $@
 	@find -L $(SRC_DIR) -type f -name '*.tei.xml' | sort -u | while read src; do \
 		f=$(TARGET_DIR)/$$(basename $${src%.tei.xml}).i5.xml; \
+		[ -r "$$f" ] || { echo "WARN: missing $$f"; continue; }; \
 		if ! grep -sq "$$f" $(TARGET_DIR)/filelist$*.txt && head -500 "$$f" | grep -Eq '<pubDate type="year">..$*'; then \
 			echo $$f >> $(TARGET_DIR)/filelist$*.txt; \
 			cat "$$f" | grep -Ev 'xml version' >> $@; \
@@ -166,7 +181,14 @@ $(TARGET_DIR)/dnf.index.tar.xz: $(TARGET_DIR)/dnf.index
 	tar -I 'xz -T0' -C $(dir $<) -cf $@ $(notdir $<)
 
 clean:
-	rm -rf $(BUILD_DIR) $(TARGET_DIR)
+	@read -p "Really delete $(BUILD_DIR)/ and $(TARGET_DIR)/? [y/N] " ans; \
+	[[ "$$ans" =~ ^[yY] ]] && rm -rf $(BUILD_DIR) $(TARGET_DIR) || echo "Aborted."
+
+distclean: clean
+	@read -p "Also delete downloaded tools (bin/, models/, extracted libs)? [y/N] " ans; \
+	[[ "$$ans" =~ ^[yY] ]] && rm -rf bin models \
+		$(KRILL_INDEXER_JAR) $(SAXON_STAMP) $(SAXON_JAR) $(XMLRESOLVER_JAR) $(XMLRESOLVER_DATA_JAR) \
+		|| echo "Aborted."
 
 $(TARGET_DIR)/dnf.index: $(foreach year,$(YEARS),$(TARGET_DIR)/dnf$(year).krill.tar) $(KRILL_INDEXER_JAR)
 	@test ! -e "$@" -a ! -L "$@" || echo "NOTE: $@ already exists; Krill-Indexer will update the existing index in place."
