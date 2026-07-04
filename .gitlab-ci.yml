@@ -2,12 +2,14 @@
 stages:
   - test
   - build
-  - deploy
 
 variables:
   VID: $VID
   DEBIAN_FRONTEND: noninteractive
   APT_CACHE_DIR: apt-cache
+  SRC_DIR: test/resources/dnf/p5
+  YEARS: "12 15"
+  SAXON_HOME: "$CI_PROJECT_DIR/lib"
 
 build-and-test-i5:
   stage: test
@@ -23,13 +25,25 @@ build-and-test-i5:
 
   before_script:
     - source `find .. -name section_helper.sh`
+    - mkdir -p "$SAXON_HOME"
+    - start_section saxon_license_debug "Preparing Saxon license"
+    - |
+      echo "SAXON_HOME=$SAXON_HOME"
+      echo "SAXON_LICENSE=$SAXON_LICENSE"
+      ls -l "$SAXON_HOME" || true
+      ls -l "$SAXON_LICENSE" || true
+      if [ -r "$SAXON_LICENSE" ]; then
+        echo "SAXON_LICENSE readable: yes"
+        cp -v "$SAXON_LICENSE" "$SAXON_HOME/saxon-license.lic" && ls -l "$SAXON_HOME/saxon-license.lic"
+      else
+        echo "SAXON_LICENSE readable: no"
+        echo "No readable SAXON_LICENSE file variable present"
+      fi
+    - end_section saxon_license_debug
     - start_section install_linux_packages "Installing missing Linux packages"
     - apt-get -o dir::cache::archives="$APT_CACHE_DIR" update
-    - apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -y libxml2-utils curl openjdk-17-jre-headless xmlstarlet
+    - apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -y libxml2-utils curl unzip openjdk-17-jre-headless xmlstarlet
     - end_section install_linux_packages
-    - start_section setup_saxon_license "Setting up Saxon license"
-    - echo "$SAXON_LICENSE" > lib/saxon-license.lic
-    - end_section setup_saxon_license
     - start_section install_models "Installing models"
     - make models/dereko_domains_s.classifier
     - end_section install_models
@@ -41,7 +55,7 @@ build-and-test-i5:
 
 
 build-index:
-  image: perl:5.38
+  image: eclipse-temurin:21-jdk
   services:
     - docker:dind
   stage: build
@@ -49,13 +63,10 @@ build-index:
     - if: '$CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH && $CI_JOB_MANUAL == "true"'
   variables:
       VID: $CI_COMMIT_BRANCH-$CI_COMMIT_SHORT_SHA
-      PERL_LOCAL_LIB_ROOT: ./perl5
-      PERL5LIB: ./perl5/lib/perl5
+      KRILL_INDEXER_HEAP: 8g
   cache:
     - key: DNB4KorAP
       paths:
-          - $PERL_LOCAL_LIB_ROOT
-          - perl5/
           - apt-cache/
     - key:
         files:
@@ -64,45 +75,39 @@ build-index:
           - target/dnf15.zip
           - target/dnf15.tree_tagger.zip
           - target/dnf15.marmot-malt.zip
-          - target/dnf15.spacy.zip
           - target/dnf15.krill.tar
 
   before_script:
     - source `find .. -name section_helper.sh`
+    - mkdir -p "$SAXON_HOME"
+    - start_section saxon_license_debug "Preparing Saxon license"
+    - |
+      echo "SAXON_HOME=$SAXON_HOME"
+      echo "SAXON_LICENSE=$SAXON_LICENSE"
+      ls -l "$SAXON_HOME" || true
+      ls -l "$SAXON_LICENSE" || true
+      if [ -r "$SAXON_LICENSE" ]; then
+        echo "SAXON_LICENSE readable: yes"
+        cp -v "$SAXON_LICENSE" "$SAXON_HOME/saxon-license.lic" && ls -l "$SAXON_HOME/saxon-license.lic"
+      else
+        echo "SAXON_LICENSE readable: no"
+        echo "No readable SAXON_LICENSE file variable present"
+      fi
+    - end_section saxon_license_debug
     - start_section install_linux_packages "Installing missing Linux packages"
     - mkdir -pv $APT_CACHE_DIR
     - apt-get -o dir::cache::archives="$APT_CACHE_DIR" update
-    - apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -y rsync pv jq curl openjdk-17-jre-headless docker.io
+    - apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -y libxml2-utils pv curl unzip docker.io
     - end_section install_linux_packages
 
-    - start_section setup_saxon_license "Setting up Saxon license"
-    - echo "$SAXON_LICENSE" > lib/saxon-license.lic
-    - end_section setup_saxon_license
-
-    - start_section install_tree_tagger "Installing TreeTagger"
-    - docker image inspect korap/conllu2treetagger:latest >/dev/null 2>&1 || curl -Ls 'https://gitlab.ids-mannheim.de/KorAP/CoNLL-U-Treetagger/-/jobs/artifacts/master/raw/conllu2treetagger.xz?job=build-docker-image' | docker load
-    - end_section install_tree_tagger
-
-    - start_section install_spacy "Installing spaCy"
-    - docker image inspect korap/conllu2spacy:latest >/dev/null 2>&1 || curl -Ls https://corpora.ids-mannheim.de/tools/conllu2spacy.tar.xz | docker load
-    - end_section install_spacy
-
-    - start_section install_perl_packages "Installing missing Perl packages"
-    - curl -L https://cpanmin.us | perl - App::cpanminus
-    - cpanm -n -l $PERL_LOCAL_LIB_ROOT File::ShareDir::Install https://github.com/KorAP/KorAP-XML-TEI.git
-    - cpanm -n -l $PERL_LOCAL_LIB_ROOT https://github.com/KorAP/KorAP-XML-Krill.git
-    - cpanm -n -l $PERL_LOCAL_LIB_ROOT https://github.com/KorAP/KorAP-XML-CoNLL-U.git
-    - end_section install_perl_packages
-
   script:
-    - export PATH=$PERL_LOCAL_LIB_ROOT/bin:$PATH
     - start_section building_index "Building index"
     - touch target/*.zip # ignore timestamps in make
     - sleep 1
     - touch target/*.*.zip
-    - MAX_THREADS=2 make -j $(nproc) target/dnb.index.tar.xz
-    - end_section building_krill
+    - MAX_THREADS=2 make -j $(nproc) target/dnf.index.tar.xz
+    - end_section building_index
   artifacts:
     paths:
       - target/*.zip
-      - target/dnf15.index.tar.xz
+      - target/dnf.index.tar.xz
