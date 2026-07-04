@@ -46,7 +46,14 @@ pre {
   </g>
 </svg>
 
-  <p>Analysieren Sie die Romane des <%= ext_link_to 'Deutschen Buchpreises', 'https://www.deutscher-buchpreis.de/' %>! Anlässlich des 20-jährigen Jubiläums der Auszeichnung stellen wir Ihnen alle digital verfügbaren Titel, die jemals für den Preis nominiert waren, <%= link_to 'online im Volltext zur Verfügung', 'https://korap.dnb.de/deutscherbuchpreis' %>. 
+% my $lang = c(@{$c->localize->locale})->first(qr!^(?i:de|en)$!) // 'en';
+% if ($lang eq 'de') {
+  <p>DeFaKo@DNB ist ein Korpus deutschsprachiger Fachliteratur aus dem Bestand der <%= ext_link_to 'Deutschen Nationalbibliothek', 'https://www.dnb.de/' %> – derzeit im Aufbau auf der Grundlage von Hochschulschriften (Dissertationen). Es wird gemeinsam vom <%= ext_link_to 'Leibniz-Institut für Deutsche Sprache', 'https://www.ids-mannheim.de/' %> und der Deutschen Nationalbibliothek bereitgestellt.</p>
 
   <p><strong>Neu bei KorAP?</strong> Dann starten Sie doch mit unserer <a id="link-guided-tour">Tour</a> oder lesen Sie unsere <%= doc_opener 'ql', begin %>Einführung<% end %>!</p>
+% } else {
+  <p>DeFaKo@DNB is a corpus of German academic literature from the holdings of the <%= ext_link_to 'German National Library', 'https://www.dnb.de/' %> – currently being built from doctoral dissertations. It is provided jointly by the <%= ext_link_to 'Leibniz Institute for the German Language', 'https://www.ids-mannheim.de/' %> and the German National Library.</p>
+
+  <p><strong>New to KorAP?</strong> Then start with our <a id="link-guided-tour">Tour</a> or read our <%= doc_opener 'ql', begin %>introduction<% end %>!</p>
+% }
 </div>
