@@ -21,4 +21,12 @@ data/db.sqlite
 data/super_client_info
 krill.secretB64
 lib/saxon-license.lic
+lib/Krill-Indexer.jar
+lib/SaxonEE*J.zip
+lib/.saxon-*.stamp
+lib/saxon-ee-*.jar
+lib/xmlresolver-*.jar
+lib/xmlresolver-*-data.jar
+bin/korapxmltool
+defako-*.index
 
