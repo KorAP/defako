@@ -53,13 +53,13 @@ repository; they are downloaded automatically by the respective make targets.
 ### Run TEI I5 conversion tests on local test data
 
 ```bash
-make -j $(nproc) test
+make test
 ```
 
 ### Build test index
 
 ```bash
-make -j $(nproc) test index KRILL_INDEXER_HEAP=8g
+make test index KRILL_INDEXER_HEAP=8g
 ```
 
 ### Run local KorAP with test index
