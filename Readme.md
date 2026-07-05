@@ -153,6 +153,9 @@ ProxyPass        /defako       http://localhost:4010/defako
 ProxyPassReverse /defako       http://localhost:4010/defako
 ```
 
+The export plugin is proxied internally by Kalamar (`/plugin/export`), so no
+separate host rule is required.
+
 ## References
 
 Kupietz, Marc/Leinen, Peter/Diewald, Nils (2024): Towards a Very Large German Academic Corpus: Step 1: Building and Making Available a Corpus of 10,000 Doctoral Dissertations. Talk given at the [*Workshop on Comparable and Interoperable Corpora of Academic Texts @CLARIN2024*](https://www.clarin.eu/event/2024/workshop-comparable-and-interoperable-corpora-academic-texts-clarin2024) on 2024-10-18, Barcelona. <https://corpora.ids-mannheim.de/slides/2024-10-17-Towards-a-German-Academic-Corpus/#/>.

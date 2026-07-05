@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Export",
+    "desc": "Exports Kalamar results",
+    "embed": [
+      {
+        "panel": "result",
+        "title": "exports KWICs and snippets",
+        "icon": "",
+        "classes": [
+          "button-icon",
+          "plugin"
+        ],
+        "onClick": {
+          "action": "addWidget",
+          "template": "https://korap.dnb.de/defako/plugin/export/export",
+          "permissions": [
+            "forms",
+            "scripts",
+            "downloads"
+          ]
+        }
+      }
+    ]
+  }
+]

@@ -20,6 +20,9 @@ services:
       - type: bind
         source: ./data/doc/intro.html.ep
         target: /kalamar/templates/custom/intro.html.ep
+      - type: bind
+        source: ./data/defako.plugins-current.json
+        target: /kalamar/defako.plugins.json
     restart: "unless-stopped"
   kustvakt:
     image: "korap/kustvakt:latest"
@@ -29,4 +32,14 @@ services:
       - type: bind
         source: "${PWD}/data/"
         target: /kustvakt/data/
+    restart: "unless-stopped"
+  kalamar-export-plugin:
+    image: "korap/kalamar-plugin-export:latest"
+    depends_on:
+      - kustvakt
+      - kalamar
+    volumes:
+      - type: bind
+        source: ./data/exportPlugin-current.conf
+        target: /export/exportPlugin.conf
     restart: "unless-stopped"
